@@ -1,0 +1,12 @@
+.main(ng-controller="MainController as main")
+  %button(ng-click="main.solve(true)") solve!
+  %input(type="checkbox" ng-model="main.showPossibilities" id="showPossibilities")
+  %label(for="showPossibilities") show possibilities
+  %input(type="checkbox" ng-model="main.showCode" id="showCode")
+  %label(for="showPossibilities") show code
+  %table
+    %tr(ng-repeat="row in main.cells" ng-init="rowScope = this")
+      %td(ng-repeat="cell in row" style="{{main.getStyle(rowScope.$index, $index)}}")
+        %input(ng-model="cell.value" style="width: 30px" type="number")
+        {{main.showPossibilities ? cell.possibilities : ''}}
+  %pre {{main.showCode ? main.code : ''}}
