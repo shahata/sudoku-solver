@@ -3,7 +3,7 @@
   %input(type="checkbox" ng-model="main.showPossibilities" id="showPossibilities")
   %label(for="showPossibilities") show possibilities
   %input(type="checkbox" ng-model="main.showCode" id="showCode")
-  %label(for="showPossibilities") show code
+  %label(for="showCode") show code
   %table
     %tr(ng-repeat="row in main.cells" ng-init="rowScope = this")
       %td(ng-repeat="cell in row" style="{{main.getStyle(rowScope.$index, $index)}}")
