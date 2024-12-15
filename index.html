@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="sodukuApp">
+  <head>
+    <title>soduku</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <div class="container">
+      <div ng-controller="MainController as main">
+        <button ng-click="main.solve(true)">solve!</button>
+        <input type="checkbox" ng-model="main.showPossibilities" id="showPossibilities">
+        <label for="showPossibilities">show possibilities</label>
+        <input type="checkbox" ng-model="main.showCode" id="showCode">
+        <label for="showCode">show code</label>
+        <table>
+          <tr ng-repeat="row in main.cells" ng-init="rowScope = this">
+            <td ng-repeat="cell in row" ng-style="main.getStyle(rowScope.$index, $index)">
+              <input ng-model="cell.value" style="width: 30px" type="number">
+              {{main.showPossibilities ? cell.possibilities : ''}}
+            </td>
+          </tr>
+        </table>
+        <pre>{{main.showCode ? main.code : ''}}</pre>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
